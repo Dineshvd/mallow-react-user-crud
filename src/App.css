@@ -1,3 +1,10 @@
+.outer-user-Card {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+  padding: 24px;
+}
+
 .custom-segmented .ant-segmented-item-selected {
   border: 2px solid #1677ff !important;
   color: #1677ff !important;

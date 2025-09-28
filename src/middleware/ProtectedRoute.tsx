@@ -10,7 +10,7 @@ const ProtectedRoute = ({ redirectTo = '/login' }: ProtectedRouteProps) => {
   const { token } = useSelector((state: RootState) => state.auth);
 
   if (!token) {
-    console.log('🔒 No token found, redirecting to login...');
+    console.log('No token found, redirecting to login...');
     return <Navigate to={redirectTo} replace />;
   }
 

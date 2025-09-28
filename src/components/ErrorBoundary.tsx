@@ -12,7 +12,7 @@ interface Props {
 function Fallback({ error, resetErrorBoundary }: FallbackProps) {
   return (
     <div style={{ padding: '20px', textAlign: 'center' }}>
-      <p>⚠️ Something went wrong: {error.message}</p>
+      <p>Something went wrong: {error.message}</p>
       <button onClick={resetErrorBoundary}>Try again</button>
     </div>
   );

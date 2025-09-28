@@ -114,9 +114,9 @@ const Login = () => {
         </Form.Item>
       </Form>
 
-      <p style={{ marginTop: 16 }}>
+      {/* <p style={{ marginTop: 16 }}>
         Test credentials: eve.holt@reqres.in / cityslicka
-      </p>
+      </p> */}
     </div>
   );
 };

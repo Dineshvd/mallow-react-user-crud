@@ -20,7 +20,6 @@ class ApiUtils {
       },
     });
 
-    // Add token to requests
     this.instance.interceptors.request.use((config) => {
       const token = localStorage.getItem('token');
       if (token) {
@@ -29,14 +28,12 @@ class ApiUtils {
       return config;
     });
 
-    // Return response.data directly
     this.instance.interceptors.response.use(
       (response: AxiosResponse) => response.data,
       this.handleResponseError
     );
   }
 
-  // Public methods return T directly
   get<T>(url: string, params?: object): Promise<T> {
     return this.instance.get(url, { params });
   }
@@ -53,7 +50,6 @@ class ApiUtils {
     return this.instance.delete(url);
   }
 
-  // Interceptor error handler
   private handleResponseError = (error: AxiosError) => {
     if (error.response?.status === 401) {
       this.handleLogout();
@@ -62,7 +58,7 @@ class ApiUtils {
   };
 
   private handleLogout() {
-    console.log('🚪 Logging out due to unauthorized...');
+    console.log('Logging out due to unauthorized...');
     localStorage.removeItem('token');
     window.location.href = '/login';
   }

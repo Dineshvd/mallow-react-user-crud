@@ -1,4 +1,3 @@
-// src/utils/snackbar.ts
 import { message } from 'antd';
 
 type MessageType = 'success' | 'error' | 'info' | 'warning';

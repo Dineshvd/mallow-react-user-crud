@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Col, Input, Modal, Row, Segmented } from 'antd';
-// import { useNavigate } from 'react-router-dom';
 import { type AppDispatch, type RootState } from '../store';
 import {
   fetchUsers,
@@ -10,7 +9,6 @@ import {
   deleteUser,
 } from '../store/slices/userSlice';
 import { showSnackbar } from '../utils/snackbar';
-// import { logout } from '../store/slices/authSlice';
 import { type User, type UserForm } from '../types';
 import { ResuableTable } from '../components/ReusableTable/ResuableTable';
 import { UserFormModal } from '../components/UserFormModal';
@@ -26,7 +24,6 @@ import '../App.css';
 
 const UsersList = () => {
   const dispatch = useDispatch<AppDispatch>();
-  // const navigate = useNavigate();
   const { users, page, perPage, total, loading, error } = useSelector(
     (state: RootState) => state.users
   );
@@ -126,14 +123,7 @@ const UsersList = () => {
   return (
     <div style={{ background: '#f5f7fb', minHeight: '100vh', padding: 24 }}>
       <div style={{ margin: '0 auto' }}>
-        <div
-          style={{
-            background: '#fff',
-            borderRadius: 8,
-            border: '1px solid #f0f0f0',
-            padding: 24,
-          }}
-        >
+        <div className="outer-user-Card">
           <Row gutter={[16, 16]} align="middle" justify="space-between">
             <Col xs={24} sm={24} md={8} lg={15}>
               <h1 style={{ margin: 0, fontSize: 24, fontWeight: 600 }}>
@@ -192,7 +182,6 @@ const UsersList = () => {
             </Col>
           </Row>
 
-          {/* Content: Table or Card */}
           {isListView ? (
             <ResuableTable
               data={filteredUsers}
