@@ -1,3 +1,51 @@
+/* Login Page */
+
+.login-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.06),
+    0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+@media (min-width: 768px) {
+  .login-card {
+    width: 520px;
+    max-width: none;
+  }
+}
+
+.soft-input .ant-input,
+.soft-input .ant-input-affix-wrapper {
+  border-color: #e6e9ef;
+  background: #fff;
+}
+
+.soft-input.ant-input-affix-wrapper:hover,
+.soft-input .ant-input-affix-wrapper:hover {
+  border-color: #d9dce3;
+}
+
+.soft-input.ant-input-affix-wrapper-focused,
+.soft-input .ant-input-affix-wrapper-focused {
+  box-shadow: none;
+}
+
+.login-card .ant-form-item {
+  margin-bottom: 16px;
+}
+
 .outer-user-Card {
   background: #fff;
   border-radius: 8px;

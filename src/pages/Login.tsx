@@ -2,10 +2,22 @@ import { useEffect, useMemo } from 'react';
 import { useForm, type SubmitHandler, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, Input, Spin, Alert, Checkbox } from 'antd';
+import {
+  Button,
+  Form,
+  Input,
+  Spin,
+  Alert,
+  Checkbox,
+  ConfigProvider,
+  Typography,
+} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { login } from '../store/slices/authSlice';
 import { type AppDispatch, type RootState } from '../store';
+import '../App.css';
+
+const { Title } = Typography;
 
 interface LoginForm {
   email: string;
@@ -25,6 +37,14 @@ const Login = () => {
       rememberMe: false,
     },
   });
+
+  const theme = {
+    token: {
+      colorPrimary: '#2F80ED',
+      borderRadiusLG: 12,
+      borderRadius: 10,
+    },
+  };
 
   const userPrefix = useMemo(() => <UserOutlined />, []);
   const lockPrefix = useMemo(() => <LockOutlined />, []);
@@ -46,78 +66,106 @@ const Login = () => {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: 'auto', padding: '50px 0' }}>
-      <h2>Login</h2>
+    <ConfigProvider theme={theme}>
+      <div className="login-bg">
+        <div className="login-card">
+          <Title
+            level={3}
+            style={{ marginBottom: 24, textAlign: 'center', fontWeight: 600 }}
+          >
+            Login
+          </Title>
 
-      {error && (
-        <Alert
-          message={error}
-          type="error"
-          showIcon
-          style={{ marginBottom: 16 }}
-        />
-      )}
+          {error && (
+            <Alert
+              message={error}
+              type="error"
+              showIcon
+              style={{ marginBottom: 16 }}
+            />
+          )}
 
-      <Form onFinish={handleSubmit(onSubmit)} layout="vertical">
-        <Form.Item
-          label="Email"
-          validateStatus={errors.email ? 'error' : ''}
-          help={errors.email?.message}
-        >
-          <Controller
-            name="email"
-            control={control}
-            rules={{
-              required: 'Email is required',
-              pattern: { value: /^\S+@\S+$/i, message: 'Invalid email' },
-            }}
-            render={({ field }) => (
-              <Input {...field} type="email" prefix={userPrefix} />
-            )}
-          />
-        </Form.Item>
+          <Form layout="vertical" onFinish={handleSubmit(onSubmit)}>
+            <Form.Item
+              validateStatus={errors.email ? 'error' : ''}
+              help={errors.email?.message}
+              style={{ marginBottom: 16 }}
+            >
+              <Controller
+                name="email"
+                control={control}
+                rules={{
+                  required: 'Email is required',
+                  pattern: { value: /^\S+@\S+$/i, message: 'Invalid email' },
+                }}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    size="large"
+                    prefix={userPrefix}
+                    className="soft-input"
+                    placeholder="Email"
+                  />
+                )}
+              />
+            </Form.Item>
 
-        <Form.Item
-          label="Password"
-          validateStatus={errors.password ? 'error' : ''}
-          help={errors.password?.message}
-        >
-          <Controller
-            name="password"
-            control={control}
-            rules={{
-              required: 'Password is required',
-              minLength: { value: 6, message: 'Min 6 characters' },
-            }}
-            render={({ field }) => (
-              <Input.Password {...field} prefix={lockPrefix} />
-            )}
-          />
-        </Form.Item>
+            <Form.Item
+              validateStatus={errors.password ? 'error' : ''}
+              help={errors.password?.message}
+              style={{ marginBottom: 16 }}
+            >
+              <Controller
+                name="password"
+                control={control}
+                rules={{
+                  required: 'Password is required',
+                  minLength: { value: 6, message: 'Min 6 characters' },
+                }}
+                render={({ field }) => (
+                  <Input.Password
+                    {...field}
+                    size="large"
+                    prefix={lockPrefix}
+                    className="soft-input"
+                    placeholder="Password"
+                  />
+                )}
+              />
+            </Form.Item>
 
-        <Form.Item>
-          <Controller
-            name="rememberMe"
-            control={control}
-            render={({ field }) => (
-              <Checkbox {...field} checked={field.value}>
-                Remember me
-              </Checkbox>
-            )}
-          />
-        </Form.Item>
+            <Form.Item style={{ marginBottom: 16 }}>
+              <Controller
+                name="rememberMe"
+                control={control}
+                render={({ field }) => (
+                  <Checkbox
+                    {...field}
+                    checked={field.value}
+                    style={{ borderRadius: 0 }}
+                  >
+                    Remember me
+                  </Checkbox>
+                )}
+              />
+            </Form.Item>
 
-        <Form.Item>
-          <Button type="primary" htmlType="submit" disabled={loading} block>
-            {loading ? <Spin size="small" /> : 'Login'}
-          </Button>
-        </Form.Item>
-      </Form>
-
-      {/* <p style={{ marginTop: 16 }}>
-        Test credentials: eve.holt@reqres.in / cityslicka
-      </p> */}
-    </div>
+            <Form.Item style={{ marginBottom: 0 }}>
+              <Button
+                type="primary"
+                htmlType="submit"
+                size="large"
+                block
+                disabled={loading}
+                style={{ borderRadius: 3 }}
+              >
+                {loading ? <Spin size="small" /> : 'Log in'}
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
+      </div>
+    </ConfigProvider>
   );
 };
 
