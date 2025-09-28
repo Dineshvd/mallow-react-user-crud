@@ -212,3 +212,35 @@
     display: none;
   }
 }
+
+.users-list-container {
+  background: #f5f7fb;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+@media (max-width: 576px) {
+  .users-list-container {
+    padding: 0;
+  }
+
+  .search-input-container {
+    width: 100%;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+}
+
+.pagination-row {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 576px) {
+  .pagination-row {
+    justify-content: center;
+  }
+}

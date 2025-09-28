@@ -121,67 +121,54 @@ const UsersList = () => {
   );
 
   return (
-    <div style={{ background: '#f5f7fb', minHeight: '100vh', padding: 24 }}>
-      <div style={{ margin: '0 auto' }}>
-        <div className="outer-user-Card">
-          <Row gutter={[16, 16]} align="middle" justify="space-between">
-            <Col xs={24} sm={24} md={8} lg={15}>
-              <h1 style={{ margin: 0, fontSize: 24, fontWeight: 600 }}>
-                Users
-              </h1>
-            </Col>
+    <div className="users-list-container">
+      <Row gutter={[16, 16]} align="middle" justify="space-between">
+        <Col xs={24} sm={24} md={8} lg={15}>
+          <h1 style={{ margin: 0, fontSize: 24, fontWeight: 600 }}>Users</h1>
+        </Col>
 
-            <Col xs={24} sm={24} md={12} lg={6}>
-              <div className="search-input-container">
-                <Input
-                  placeholder="input search text"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  allowClear
-                  className="search-input"
-                />
-                <div className="search-icon-container">
-                  <SearchOutlined className="search-icon" />
-                </div>
-              </div>
-            </Col>
+        <Col xs={24} sm={24} md={12} lg={6}>
+          <div className="search-input-container">
+            <Input
+              placeholder="input search text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              allowClear
+              className="search-input"
+            />
+            <div className="search-icon-container">
+              <SearchOutlined className="search-icon" />
+            </div>
+          </div>
+        </Col>
 
-            <Col xs={24} sm={24} md={4} lg={2}>
-              <Button
-                type="primary"
-                onClick={handleCreate}
-                className="create-button"
-                style={{ borderRadius: 2, width: '100%' }}
-              >
-                Create User
-              </Button>
-            </Col>
-          </Row>
+        <Col xs={24} sm={24} md={4} lg={2}>
+          <Button
+            type="primary"
+            onClick={handleCreate}
+            className="create-button"
+            style={{ borderRadius: 2, width: '100%' }}
+          >
+            Create User
+          </Button>
+        </Col>
+      </Row>
 
-          <Row>
-            <Col
-              xs={24}
-              sm={24}
-              md={12}
-              lg={6}
-              style={{ margin: '16px 0px 16px 0px' }}
-            >
-              <Segmented
-                value={isListView ? 'table' : 'card'}
-                onChange={(val) => setIsListView(val === 'table')}
-                options={[
-                  { label: 'Table', value: 'table', icon: <TableOutlined /> },
-                  {
-                    label: 'Card',
-                    value: 'card',
-                    icon: <UnorderedListOutlined />,
-                  },
-                ]}
-                className="custom-segmented"
-              />
-            </Col>
-          </Row>
+      <Row style={{ marginTop: 16 }}>
+        <Col xs={24} sm={24} md={12} lg={6}>
+          <Segmented
+            value={isListView ? 'table' : 'card'}
+            onChange={(val) => setIsListView(val === 'table')}
+            options={[
+              { label: 'Table', value: 'table', icon: <TableOutlined /> },
+              { label: 'Card', value: 'card', icon: <UnorderedListOutlined /> },
+            ]}
+          />
+        </Col>
+      </Row>
 
+      <Row style={{ marginTop: 16 }}>
+        <Col span={24}>
           {isListView ? (
             <ResuableTable
               data={filteredUsers}
@@ -201,26 +188,27 @@ const UsersList = () => {
               }
             />
           )}
+        </Col>
+      </Row>
 
-          <UserFormModal
-            visible={modalVisible}
-            onCancel={() => setModalVisible(false)}
-            onSubmit={handleFormSubmit}
-            defaultValues={editUser || undefined}
-            loading={modalLoading}
+      <Row className="pagination-row">
+        <Col>
+          <Pagination
+            current={page}
+            total={total}
+            pageSize={perPage}
+            onChange={onPageChange}
           />
-        </div>
-        <Row justify="end" style={{ marginTop: 16 }}>
-          <Col>
-            <Pagination
-              current={page}
-              total={total}
-              pageSize={perPage}
-              onChange={onPageChange}
-            />
-          </Col>
-        </Row>
-      </div>
+        </Col>
+      </Row>
+
+      <UserFormModal
+        visible={modalVisible}
+        onCancel={() => setModalVisible(false)}
+        onSubmit={handleFormSubmit}
+        defaultValues={editUser || undefined}
+        loading={modalLoading}
+      />
     </div>
   );
 };
