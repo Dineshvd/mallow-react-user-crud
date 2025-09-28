@@ -21,8 +21,8 @@ function App() {
             <Route path="/login" element={<Login />} />
           </Route>
 
-          <Route element={<MainLayout />}>
-            <Route element={<ProtectedRoute />}>
+          <Route element={<ProtectedRoute />}>
+            <Route element={<MainLayout />}>
               <Route path="/users" element={<UsersList />} />
               <Route path="/" element={<Navigate to="/users" replace />} />
             </Route>
