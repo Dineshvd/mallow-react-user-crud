@@ -1,0 +1,159 @@
+.custom-segmented .ant-segmented-item-selected {
+  border: 2px solid #1677ff !important;
+  color: #1677ff !important;
+}
+
+.custom-segmented .ant-segmented-item-selected svg {
+  color: #1677ff !important;
+}
+
+.ant-input-affix-wrapper {
+  border-radius: 0 !important;
+}
+
+.ant-input-suffix {
+  line-height: 1;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 400px;
+  min-width: 200px;
+  height: 34px;
+  border: 1px solid gray;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.search-input {
+  flex: 1;
+  height: 100%;
+  padding: 0 12px;
+  border: none;
+  min-width: 0;
+}
+
+.search-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid gray;
+  padding: 0 12px;
+  cursor: pointer;
+  height: 100%;
+  background-color: #fff;
+}
+
+.search-icon {
+  color: gray;
+  font-size: 16px;
+}
+
+.create-button {
+  border-radius: 0;
+  white-space: nowrap;
+}
+
+/* USER CARD */
+
+.user-card {
+  position: relative;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  padding: 24px 16px;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 180ms ease;
+  overflow: hidden;
+}
+
+.user-card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.user-card__title {
+  margin: 8px 0 0;
+  font-weight: 600;
+  color: #111;
+}
+
+.user-card__desc {
+  margin: 6px 0 0;
+  color: #7d7d7d;
+}
+
+.user-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(60, 60, 67, 0.48);
+  opacity: 0;
+  transition: opacity 160ms ease;
+  pointer-events: none;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.user-card:hover .user-card__overlay {
+  opacity: 1;
+}
+
+.user-card__actions {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -6px) scale(0.98);
+  display: flex;
+  gap: 12px;
+  opacity: 0;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+  z-index: 2;
+}
+
+.user-card:hover .user-card__actions {
+  opacity: 1;
+  transform: translate(-50%, -6px) scale(1);
+}
+
+.user-card__btn.ant-btn {
+  border: none;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.user-card__btn .anticon {
+  font-size: 18px;
+}
+
+.user-card__btn--edit {
+  background-color: #6f7cff;
+}
+.user-card__btn--edit:hover {
+  background-color: #6170ff;
+}
+
+.user-card__btn--delete {
+  background-color: #ff3b30;
+}
+.user-card__btn--delete:hover {
+  background-color: #f2332a;
+}
+
+@media (max-width: 768px) {
+  .header-username {
+    display: none;
+  }
+}
