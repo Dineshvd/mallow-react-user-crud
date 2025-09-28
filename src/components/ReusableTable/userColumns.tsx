@@ -43,12 +43,12 @@ export const getUserColumns = ({
   {
     title: 'First Name',
     dataIndex: 'first_name',
-    responsive: ['md', 'lg', 'xl'],
+    responsive: ['xs', 'md', 'lg', 'xl'],
   },
   {
     title: 'Last Name',
     dataIndex: 'last_name',
-    responsive: ['lg', 'xl'],
+    responsive: ['xs', 'md', 'lg', 'xl'],
   },
   {
     title: 'Action',
