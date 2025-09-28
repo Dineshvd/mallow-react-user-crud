@@ -4,9 +4,8 @@ import axios, {
   type AxiosResponse,
 } from 'axios';
 
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || 'https://reqres.in/api';
-const API_KEY = import.meta.env.VITE_API_KEY || 'reqres-free-v1';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 class ApiUtils {
   private instance: AxiosInstance;
