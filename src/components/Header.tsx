@@ -1,5 +1,5 @@
 import { Layout, Row, Col, Button, Tooltip } from 'antd';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/slices/authSlice';
 import { LogoutOutlined } from '@ant-design/icons';
@@ -9,11 +9,11 @@ const { Header: AntHeader } = Layout;
 
 const Header = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logout());
-    // navigate('/login');
+    navigate('/login');
   };
 
   return (
