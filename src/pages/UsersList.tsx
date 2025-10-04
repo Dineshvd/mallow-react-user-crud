@@ -40,10 +40,12 @@ const UsersList = () => {
 
   const filteredUsers = useMemo(
     () =>
-      users.filter(
+      users?.filter(
         (user) =>
-          user.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          user.last_name.toLowerCase().includes(searchTerm.toLowerCase())
+          user?.first_name
+            ?.toLowerCase()
+            ?.includes(searchTerm?.toLowerCase()) ||
+          user?.last_name?.toLowerCase()?.includes(searchTerm?.toLowerCase())
       ),
     [users, searchTerm]
   );
@@ -108,11 +110,11 @@ const UsersList = () => {
     }
   };
 
-  const cardItems = filteredUsers.map((user) => ({
-    id: user.id,
-    title: `${user.first_name} ${user.last_name}`,
-    description: user.email,
-    cover: user.avatar,
+  const cardItems = filteredUsers?.map((user) => ({
+    id: user?.id,
+    title: `${user?.first_name} ${user?.last_name}`,
+    description: user?.email,
+    cover: user?.avatar,
   }));
 
   const columns = useMemo(
